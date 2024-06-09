@@ -26,7 +26,7 @@ function App() {
     }, []);
 
     const fetchItems = () => {
-        axios.get('http://18.143.155.131/items')
+        axios.get('http://test-alb-2135163823.ap-southeast-1.elb.amazonaws.com:80/items')
             .then(response => {
                 if (response.status === 200) {
                     setItems(response.data.results);
@@ -36,7 +36,7 @@ function App() {
     };
 
     const handleSelectItem = (itemId) => {
-        axios.get(`http://18.143.155.131/items/${itemId}`)
+        axios.get(`http://test-alb-2135163823.ap-southeast-1.elb.amazonaws.com:80/items/${itemId}`)
             .then(response => {
                 if (response.status === 200) {
                     setSelectedItem(response.data.results);
@@ -57,7 +57,7 @@ function App() {
         event.preventDefault();
         console.log('Submitting:', newItem);
 
-        axios.post('http://18.143.155.131/items', newItem)
+        axios.post('http://test-alb-2135163823.ap-southeast-1.elb.amazonaws.com:80/items', newItem)
             .then(response => {
                 console.log("Response from POST request:", response);
                 if (response.status === 200 || response.status === 201) {
